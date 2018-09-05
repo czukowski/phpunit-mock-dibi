@@ -35,5 +35,5 @@ trait MockTrait
     /**
      * @param  MockObject  $mockObject
      */
-    abstract public function registerMockObject(MockObject $mockObject): void;
+    abstract public function registerMockObject(MockObject $mockObject);
 }

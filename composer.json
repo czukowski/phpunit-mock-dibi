@@ -15,8 +15,8 @@
         "issues": "https://github.com/czukowski/phpunit-mock-dibi/issues"
     },
     "require": {
-        "php": ">=5.4",
-        "czukowski/phpunit-mock-db": "*",
+        "php": "^7.0",
+        "czukowski/phpunit-mock-db": "~6.0",
         "dibi/dibi": "~3.0"
     },
     "autoload": {

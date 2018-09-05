@@ -22,7 +22,7 @@ version, the installation command would look like this:
 composer require --dev czukowski/phpunit-mock-dibi "~N.0"
 ```
 
-Dibi versions starting from 3.0 are supported.
+Dibi versions starting from 3.0 are supported, but only with PHP 7.0+.
 
 Usage
 -----
