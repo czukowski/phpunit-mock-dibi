@@ -60,17 +60,17 @@ class MockQueryDriverTraitTest extends Testcase
             [
                 'SELECT * FROM `t1`',
                 NULL, NULL, 100,
-                $this->createMockDouble(ResultDriver::class),
+                $this->createMock(ResultDriver::class),
             ],
             [
                 'SELECT * FROM `t2`',
                 NULL, 10, 100,
-                $this->createMockDouble(ResultDriver::class),
+                $this->createMock(ResultDriver::class),
             ],
             [
                 'SELECT * FROM `t3`',
                 1, 10, 100,
-                $this->createMockDouble(ResultDriver::class),
+                $this->createMock(ResultDriver::class),
             ],
             [
                 'INSERT INTO `t4` VALUES ("foo", "bar")',
