@@ -3,8 +3,7 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use DateTime,
     Dibi\DateTime as DibiDateTime,
-    Dibi\NotImplementedException,
-    Dibi\NotSupportedException;
+    Dibi\NotImplementedException;
 
 /**
  * Sqlite3DriverTest
@@ -188,9 +187,9 @@ class Sqlite3DriverTest extends Testcase
     /**
      * @return  Sqlite3Driver
      */
-    private function createObject(string $fmtDate = 'U', string $fmtDateTime = 'U')
+    private function createObject(string $formatDate = 'U', string $formatDateTime = 'U')
     {
         return $this->getDriversFactory()
-            ->createSqlite3Driver($fmtDate, $fmtDateTime);
+            ->createSqlite3Driver($formatDate, $formatDateTime);
     }
 }

@@ -22,6 +22,17 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
     use MockQueryResultDriverTrait;
 
     /**
+     * @param  array  $config
+     */
+    public function __construct(array $config = [])
+    {
+        $formatDate = $config['formatDate'] ?? 'U';
+        $formatDateTime = $config['formatDateTime'] ?? 'U';
+        $this->setDateTimeFormats($formatDate, $formatDateTime);
+        // No calling parent constructor!
+    }
+
+    /**
      * @param  mixed  $savepoint
      */
     public function begin($savepoint = NULL)
@@ -116,7 +127,7 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
      * @param  string  $fmtDate
      * @param  string  $fmtDateTime
      */
-    public function setDateTimeFormats(string $fmtDate = 'U', string $fmtDateTime = 'U'): void
+    public function setDateTimeFormats(string $fmtDate, string $fmtDateTime): void
     {
         $propertyDate = new ReflectionProperty(Drivers\Sqlite3Driver::class, 'fmtDate');
         $propertyDate->setAccessible(TRUE);
