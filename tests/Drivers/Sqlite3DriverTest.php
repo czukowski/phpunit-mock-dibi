@@ -15,35 +15,6 @@ use DateTime,
 class Sqlite3DriverTest extends Testcase
 {
     /**
-     * @dataProvider  provideConnect
-     */
-    public function testConnect($config, $expectedFmtDate, $expectedFmtDateTime)
-    {
-        $object = $this->createObject();
-        $object->connect($config);
-        $actualFmtDate = $this->getObjectAttribute($object, 'fmtDate');
-        $this->assertSame($expectedFmtDate, $actualFmtDate);
-        $actualFmtDateTime = $this->getObjectAttribute($object, 'fmtDateTime');
-        $this->assertSame($expectedFmtDateTime, $actualFmtDateTime);
-    }
-
-    public function provideConnect()
-    {
-        return [
-            [
-                [],
-                'U',
-                'U',
-            ],
-            [
-                ['formatDate' => 'Y-m-d', 'formatDateTime' => 'Y-m-d H:i:s'],
-                'Y-m-d',
-                'Y-m-d H:i:s',
-            ],
-        ];
-    }
-
-    /**
      * @dataProvider  provideBegin
      */
     public function testBegin($savepoint, $expected)
@@ -98,13 +69,13 @@ class Sqlite3DriverTest extends Testcase
     }
 
     /**
+     * Also testing `fmtDate` property.
+     * 
      * @dataProvider  provideEscapeDate
      */
-    public function testEscapeDate($value, $expected)
+    public function testEscapeDate($format, $value, $expected)
     {
-        $object = $this->createObject();
-        $config = ['formatDate' => 'Y-m-d'];
-        $object->connect($config);
+        $object = $this->createObject($format);
         $actual = $object->escapeDate($value);
         $this->assertSame($expected, $actual);
     }
@@ -112,21 +83,21 @@ class Sqlite3DriverTest extends Testcase
     public function provideEscapeDate()
     {
         return [
-            [1525932234, '2018-05-10'],
-            ['2018-05-10 08:18:53', '2018-05-10'],
-            [new DateTime('2018-05-10 00:00:00'), '2018-05-10'],
-            [new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10'],
+            ['Y-m-d', 1525932234, '2018-05-10'],
+            ['Y-m-d', '2018-05-10 08:18:53', '2018-05-10'],
+            ['Y-m-d', new DateTime('2018-05-10 00:00:00'), '2018-05-10'],
+            ['Y-m-d', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10'],
         ];
     }
 
     /**
+     * Also testing `fmtDateTime` property.
+     * 
      * @dataProvider  provideEscapeDateTime
      */
-    public function testEscapeDateTime($value, $expected)
+    public function testEscapeDateTime($format, $value, $expected)
     {
-        $object = $this->createObject();
-        $config = ['formatDateTime' => 'Y-m-d H:i:s'];
-        $object->connect($config);
+        $object = $this->createObject('U', $format);
         $actual = $object->escapeDateTime($value);
         $this->assertSame($expected, $actual);
     }
@@ -134,10 +105,10 @@ class Sqlite3DriverTest extends Testcase
     public function provideEscapeDateTime()
     {
         return [
-            [1525932234, '2018-05-10 06:03:54'],
-            ['2018-05-10 08:18:53', '2018-05-10 08:18:53'],
-            [new DateTime('2018-05-10 00:00:00'), '2018-05-10 00:00:00'],
-            [new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10 23:59:59'],
+            ['Y-m-d H:i:s', 1525932234, '2018-05-10 06:03:54'],
+            ['Y-m-d H:i:s', '2018-05-10 08:18:53', '2018-05-10 08:18:53'],
+            ['Y-m-d H:i:s', new DateTime('2018-05-10 00:00:00'), '2018-05-10 00:00:00'],
+            ['Y-m-d H:i:s', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10 23:59:59'],
         ];
     }
 
@@ -217,9 +188,9 @@ class Sqlite3DriverTest extends Testcase
     /**
      * @return  Sqlite3Driver
      */
-    private function createObject()
+    private function createObject(string $fmtDate = 'U', string $fmtDateTime = 'U')
     {
         return $this->getDriversFactory()
-            ->createSqlite3Driver();
+            ->createSqlite3Driver($fmtDate, $fmtDateTime);
     }
 }

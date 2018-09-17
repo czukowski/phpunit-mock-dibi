@@ -131,11 +131,15 @@ class DriversFactory
     }
 
     /**
+     * @param   string  $fmtDate
+     * @param   string  $fmtDateTime
      * @return  Sqlite3Driver
      */
-    public function createSqlite3Driver()
+    public function createSqlite3Driver(string $fmtDate = 'U', string $fmtDateTime = 'U')
     {
-        return new Sqlite3Driver;
+        $driver = new Sqlite3Driver;
+        $driver->setDateTimeFormats($fmtDate, $fmtDateTime);
+        return $driver;
     }
 
     /**

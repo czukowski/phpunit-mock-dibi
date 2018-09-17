@@ -2,12 +2,10 @@
 namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use Cz\PHPUnit\SQL,
-    DateTime,
-    DateTimeInterface,
-    Dibi\DateTime as DibiDateTime,
     Dibi\Drivers,
     Dibi\NotImplementedException,
-    Dibi\NotSupportedException;
+    Dibi\NotSupportedException,
+    ReflectionProperty;
 
 /**
  * Sqlite3Driver
@@ -22,24 +20,6 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
     use MockQueryResultDriverTrait;
-
-    /**
-     * @var  string
-     */
-    private $fmtDate;
-    /**
-     * @var  string
-     */
-    private $fmtDateTime;
-
-    /**
-     * @param  array  $config
-     */
-    public function connect(array & $config)
-    {
-        $this->fmtDate = isset($config['formatDate']) ? $config['formatDate'] : 'U';
-        $this->fmtDateTime = isset($config['formatDateTime']) ? $config['formatDateTime'] : 'U';
-    }
 
     /**
      * @param  mixed  $savepoint
@@ -63,34 +43,6 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
     public function rollback($savepoint = NULL)
     {
         $this->addExecutedQuery($savepoint ? "ROLLBACK TO SAVEPOINT $savepoint" : 'ROLLBACK');
-    }
-
-    /**
-     * A copy of parent method due to usage of private property.
-     * 
-     * @param   DateTime|DateTimeInterface|string|int
-     * @return  string
-     */
-    public function escapeDate($value)
-    {
-        if ( ! $value instanceof DateTime && ! $value instanceof DateTimeInterface) {
-            $value = new DibiDateTime($value);
-        }
-        return $value->format($this->fmtDate);
-    }
-
-    /**
-     * A copy of parent method due to usage of private property.
-     * 
-     * @param   DateTime|DateTimeInterface|string|int
-     * @return  string
-     */
-    public function escapeDateTime($value)
-    {
-        if ( ! $value instanceof DateTime && ! $value instanceof DateTimeInterface) {
-            $value = new DibiDateTime($value);
-        }
-        return $value->format($this->fmtDateTime);
     }
 
     /**
@@ -158,5 +110,19 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
     public function registerAggregateFunction($name, callable $rowCallback, callable $agrCallback, $numArgs = -1)
     {
         throw new NotImplementedException('No user-defined functions for mock DB connection');
+    }
+
+    /**
+     * @param  string  $fmtDate
+     * @param  string  $fmtDateTime
+     */
+    public function setDateTimeFormats(string $fmtDate = 'U', string $fmtDateTime = 'U'): void
+    {
+        $propertyDate = new ReflectionProperty(Drivers\Sqlite3Driver::class, 'fmtDate');
+        $propertyDate->setAccessible(TRUE);
+        $propertyDate->setValue($this, $fmtDate);
+        $propertyDateTime = new ReflectionProperty(Drivers\Sqlite3Driver::class, 'fmtDateTime');
+        $propertyDateTime->setAccessible(TRUE);
+        $propertyDateTime->setValue($this, $fmtDateTime);
     }
 }
