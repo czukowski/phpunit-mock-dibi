@@ -21,6 +21,15 @@ class MockTraitTest extends Testcase
      */
     public function testCreateDatabaseMock($driverType, $expectedException)
     {
+        // Skip the test for now. Revert this once Dibi 4 releases with a fix to 
+        // The issue mostly affects only this test, MockDibi can still be used as
+        // usual since it does not use mock objects for Dibi drivers, but real
+        // class instances.
+        $this->markTestSkipped(
+            'Skipped test due to Dibi issue #315 (affecting version 4.0.0)'
+            .' <https://github.com/dg/dibi/issues/315>'
+        );
+
         $driver = $this->createDibiDriver($driverType);
         $dibi = new Connection([
             'driver' => $driver,
