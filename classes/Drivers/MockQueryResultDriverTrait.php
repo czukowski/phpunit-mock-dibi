@@ -50,7 +50,7 @@ trait MockQueryResultDriverTrait
      * @param   integer  $row
      * @return  boolean
      */
-    public function seek($row): bool
+    public function seek(int $row): bool
     {
         if (isset($this->resultSet[$row])) {
             $this->cursor = $row;
@@ -64,7 +64,7 @@ trait MockQueryResultDriverTrait
      * @param   bool  $assoc
      * @return  array|NULL
      */
-    public function fetch($assoc): ?array
+    public function fetch(bool $assoc): ?array
     {
         if ($this->cursor === NULL) {
             $this->cursor = 0;

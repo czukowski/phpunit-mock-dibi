@@ -27,7 +27,7 @@ class OracleResult extends Drivers\OracleResult
     /**
      * @throws  NotImplementedException
      */
-    public function seek($row): bool
+    public function seek(int $row): bool
     {
         // Parent class will throw exception.
         return parent::seek($row);

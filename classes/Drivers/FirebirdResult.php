@@ -25,7 +25,7 @@ class FirebirdResult extends Drivers\FirebirdResult
     /**
      * @throws  NotSupportedException
      */
-    public function seek($row): bool
+    public function seek(int $row): bool
     {
         // Parent class will throw exception.
         return parent::seek($row);

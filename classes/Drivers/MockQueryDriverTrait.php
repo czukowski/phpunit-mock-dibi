@@ -94,7 +94,7 @@ trait MockQueryDriverTrait
      * @param  integer|NULL  $limit
      * @param  integer|NULL  $offset
      */
-    abstract public function applyLimit(string & $sql, ?int $limit, ?int $offset);
+    abstract public function applyLimit(string & $sql, ?int $limit, ?int $offset): void;
 
     /**
      * @return  integer|NULL
@@ -208,48 +208,48 @@ trait MockQueryDriverTrait
     /**
      * @return  Reflector
      */
-    abstract public function getReflector();
+    abstract public function getReflector(): Reflector;
 
     /**
      * @param   string  $value
      * @return  string
      */
-    abstract public function escapeText(string $value);
+    abstract public function escapeText(string $value): string;
 
     /**
      * @param   string  $value
      * @return  string
      */
-    abstract public function escapeBinary(string $value);
+    abstract public function escapeBinary(string $value): string;
 
     /**
      * @param   string  $value
      * @return  string
      */
-    abstract public function escapeIdentifier(string $value);
+    abstract public function escapeIdentifier(string $value): string;
 
     /**
      * @param   boolean  $value
      * @return  string
      */
-    abstract public function escapeBool(bool $value);
+    abstract public function escapeBool(bool $value): string;
 
     /**
      * @param   mixed  $value
      * @return  string
      */
-    abstract public function escapeDate($value);
+    abstract public function escapeDate($value): string;
 
     /**
      * @param   mixed  $value
      * @return  string
      */
-    abstract public function escapeDateTime($value);
+    abstract public function escapeDateTime($value): string;
 
     /**
      * @param   string   $value
      * @param   integer  $pos
      * @return  string
      */
-    abstract public function escapeLike(string $value, int $pos);
+    abstract public function escapeLike(string $value, int $pos): string;
 }

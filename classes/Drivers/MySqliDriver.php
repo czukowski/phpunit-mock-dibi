@@ -4,7 +4,8 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 use Cz\PHPUnit\SQL,
     Dibi\Drivers,
     Dibi\NotImplementedException,
-    mysqli;
+    mysqli,
+    mysqli_result;
 
 /**
  * MySqliDriver
@@ -70,11 +71,20 @@ class MySqliDriver extends Drivers\MySqliDriver implements
     }
 
     /**
+     * @param   mixed  $resultSet
      * @return  MySqliResult
      */
-    public function createResultDriver($resultSet): Drivers\MySqliResult
+    public function createResultSet($resultSet)
     {
         return new MySqliResult($resultSet);
+    }
+
+    /**
+     * @return  MySqliResult
+     */
+    public function createResultDriver(mysqli_result $result): Drivers\MySqliResult
+    {
+        return new MySqliResult($result);
     }
 
     /**
