@@ -127,7 +127,7 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
      * @param  string  $fmtDate
      * @param  string  $fmtDateTime
      */
-    public function setDateTimeFormats(string $fmtDate, string $fmtDateTime): void
+    public function setDateTimeFormats(string $fmtDate, string $fmtDateTime)
     {
         $propertyDate = new ReflectionProperty(Drivers\Sqlite3Driver::class, 'fmtDate');
         $propertyDate->setAccessible(TRUE);
