@@ -3,7 +3,8 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use DateTime,
     Dibi\DateTime as DibiDateTime,
-    Dibi\NotImplementedException;
+    Dibi\NotImplementedException,
+    Dibi\NotSupportedException;
 
 /**
  * Sqlite3DriverTest
