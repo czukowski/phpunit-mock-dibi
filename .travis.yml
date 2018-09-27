@@ -4,6 +4,14 @@ php:
   - '7.1'
   - '7.2'
 
+env:
+  - PHPUNIT_VERSION=""
+  - PHPUNIT_VERSION="~6.0"
+  - PHPUNIT_VERSION="~5.0"
+
+before_install:
+  - if [ "$PHPUNIT_VERSION" != "" ]; then composer require --dev --no-update phpunit/phpunit:$PHPUNIT_VERSION; fi
+
 install:
   - travis_retry composer install --no-progress --prefer-dist
 

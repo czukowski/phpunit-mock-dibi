@@ -68,9 +68,17 @@ $this->createDatabaseMock($dibi)
 ```
 
 Return a pre-defined result set on each specific database query, expecting each query to be executed
-exactly once (note: the order in which the queries are expected doesn't have to be same as the order
-in which the queries are executed, also note that whitespace will be ignored in queries, so they can
-be loaded from well-formatted files, which could be especially useful for long and complex queries):
+exactly once:
+
+_Note_: the order in which the query expectations are being set up doesn't have to be same as the order
+in which the queries will be executed.
+
+_Also note_: the whitespaces will be ignored in query constraints, so they can be loaded from well-formatted
+files, which could be especially useful for long and complex queries.
+
+_Also note_: different Dibi drivers may use different characters to quote identifiers, eg. backticks for
+MySQL or square brackets for MS SQL Server, etc. Query constraints will use Dibi Translator to transform
+queries so there's no need to take extra care to have identifiers quotes matching the currently used driver.
 
 ```php
 $mock = $this->createDatabaseMock($dibi);

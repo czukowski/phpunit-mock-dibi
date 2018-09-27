@@ -4,8 +4,7 @@ namespace Cz\PHPUnit\MockDibi;
 use Cz\PHPUnit\MockDB\DatabaseDriverInterface,
     Cz\PHPUnit\MockDB\MockObject\MockWrapper,
     Dibi\Connection,
-    LogicException,
-    PHPUnit\Framework\MockObject\MockObject;
+    LogicException;
 
 /**
  * MockTrait
@@ -33,7 +32,8 @@ trait MockTrait
     }
 
     /**
-     * @param  MockObject  $mockObject
+     * Commented out for compatibility with older PHPUnit versions.
+     * 
+     * abstract public function registerMockObject(\PHPUnit\Framework\MockObject\MockObject $mockObject): void;
      */
-    abstract public function registerMockObject(MockObject $mockObject): void;
 }

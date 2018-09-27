@@ -13,6 +13,11 @@ use Cz\PHPUnit\MockDibi\MockTrait,
     RuntimeException,
     Throwable;
 
+// Backward compatibility with older PHPUnit versions.
+if ( ! class_exists(Constraint::class) && class_exists(\PHPUnit_Framework_Constraint::class)) {
+    class_alias(\PHPUnit_Framework_Constraint::class, Constraint::class);
+}
+
 /**
  * DriversIntegrationTest
  * 
