@@ -4,12 +4,12 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 use Dibi\NotSupportedException;
 
 /**
- * Sqlite3ResultTest
+ * SqliteResultTest
  * 
  * @author   czukowski
  * @license  MIT License
  */
-class Sqlite3ResultTest extends Testcase
+class SqliteResultTest extends Testcase
 {
     /**
      * @dataProvider  provideUnsupportedMethods
@@ -31,10 +31,10 @@ class Sqlite3ResultTest extends Testcase
     }
 
     /**
-     * @return  Sqlite3Result
+     * @return  SqliteResult
      */
     private function createObject()
     {
-        return new Sqlite3Result(NULL);
+        return new SqliteResult(NULL);
     }
 }

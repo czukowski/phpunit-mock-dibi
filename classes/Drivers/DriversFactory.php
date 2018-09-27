@@ -128,6 +128,19 @@ class DriversFactory
     /**
      * @param   string  $formatDate
      * @param   string  $formatDateTime
+     * @return  SqliteDriver
+     */
+    public function createSqliteDriver(string $formatDate = 'U', string $formatDateTime = 'U')
+    {
+        return new SqliteDriver([
+            'formatDate' => $formatDate,
+            'formatDateTime' => $formatDateTime,
+        ]);
+    }
+
+    /**
+     * @param   string  $formatDate
+     * @param   string  $formatDateTime
      * @return  Sqlite3Driver
      */
     public function createSqlite3Driver(string $formatDate = 'U', string $formatDateTime = 'U')

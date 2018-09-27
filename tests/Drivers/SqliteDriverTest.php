@@ -6,12 +6,12 @@ use DateTime,
     Dibi\NotImplementedException;
 
 /**
- * Sqlite3DriverTest
+ * SqliteDriverTest
  * 
  * @author   czukowski
  * @license  MIT License
  */
-class Sqlite3DriverTest extends Testcase
+class SqliteDriverTest extends Testcase
 {
     /**
      * @dataProvider  provideBegin
@@ -184,11 +184,11 @@ class Sqlite3DriverTest extends Testcase
     }
 
     /**
-     * @return  Sqlite3Driver
+     * @return  SqliteDriver
      */
     private function createObject(string $formatDate = 'U', string $formatDateTime = 'U')
     {
         return $this->getDriversFactory()
-            ->createSqlite3Driver($formatDate, $formatDateTime);
+            ->createSqliteDriver($formatDate, $formatDateTime);
     }
 }

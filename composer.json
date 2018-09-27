@@ -17,7 +17,7 @@
     "require": {
         "php": ">=7.1",
         "czukowski/phpunit-mock-db": "~7.0",
-        "dibi/dibi": "~4.0"
+        "dibi/dibi": "dev-master"
     },
     "autoload": {
         "psr-4": {

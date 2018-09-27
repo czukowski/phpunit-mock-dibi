@@ -3,22 +3,22 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use Dibi\Drivers,
     Dibi\NotSupportedException,
-    SQLite3Result as NativeSQLite3Result;
+    SQLite3Result as NativeSQLiteResult;
 
 /**
- * Sqlite3Result
+ * SqliteResult
  * 
  * @author   czukowski
  * @license  MIT License
  */
-class Sqlite3Result extends Drivers\Sqlite3Result
+class SqliteResult extends Drivers\SqliteResult
 {
     use MockQueryResultDriverTrait;
 
     /**
      * @throws  NotSupportedException
      */
-    public function getResultResource(): NativeSQLite3Result
+    public function getResultResource(): NativeSQLiteResult
     {
         throw new NotSupportedException('Native result resource unavailable for mock DB connection');
     }
