@@ -188,7 +188,7 @@ class Sqlite3DriverTest extends Testcase
     /**
      * @return  Sqlite3Driver
      */
-    private function createObject(string $formatDate = 'U', string $formatDateTime = 'U')
+    private function createObject($formatDate = 'U', $formatDateTime = 'U')
     {
         return $this->getDriversFactory()
             ->createSqlite3Driver($formatDate, $formatDateTime);
