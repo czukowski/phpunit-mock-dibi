@@ -8,10 +8,10 @@ use Cz\PHPUnit\MockDibi\MockTrait,
     Dibi\Connection,
     Dibi\NotSupportedException,
     Dibi\Result,
+    Exception,
     PHPUnit\Framework\Constraint\Constraint,
     PHPUnit\Framework\Exception as FrameworkException,
-    RuntimeException,
-    Throwable;
+    RuntimeException;
 
 // Backward compatibility with older PHPUnit versions.
 if ( ! class_exists(Constraint::class) && class_exists(\PHPUnit_Framework_Constraint::class)) {
@@ -297,7 +297,7 @@ class DriversIntegrationTest extends Testcase
     public function testMatchWithQueryMatchersWithConsecutiveCallsBuilder(
         Driver $driver,
         $query,
-        Throwable $exception,
+        Exception $exception,
         array $expecteds
     ) {
         $queue = $expecteds;
@@ -327,7 +327,7 @@ class DriversIntegrationTest extends Testcase
             $dibi->query($query);
             $this->fail('Expected exception');
         }
-        catch (Throwable $e) {
+        catch (Exception $e) {
             if ($e instanceof FrameworkException) {
                 throw $e;
             }

@@ -6,7 +6,7 @@ use Cz\PHPUnit\MockDibi\Drivers\DatabaseDriverInterface,
     Dibi\Connection,
     Dibi\Driver,
     LogicException,
-    Throwable;
+    Exception;
 
 /**
  * MockTraitTest
@@ -25,7 +25,7 @@ class MockTraitTest extends Testcase
             'driver' => $this->createDibiDriver($driverType),
         ]);
         $mockObject = NULL;
-        $object = $this->createObject($expectedException instanceof Throwable, $mockObject);
+        $object = $this->createObject($expectedException instanceof Exception, $mockObject);
 
         $this->expectExceptionFromArgument($expectedException);
         $actual = $object->createDatabaseMock($dibi);
