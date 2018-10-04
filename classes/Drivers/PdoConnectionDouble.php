@@ -23,6 +23,7 @@ class PdoConnectionDouble extends PDO
     {
         // No calling parent constructor!
         $this->attributes[PDO::ATTR_DRIVER_NAME] = $driverName;
+        $this->attributes[PDO::ATTR_ERRMODE] = PDO::ERRMODE_SILENT;
     }
 
     /**

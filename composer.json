@@ -16,7 +16,7 @@
     },
     "require": {
         "php": "^7.0",
-        "czukowski/phpunit-mock-db": "~6.0",
+        "czukowski/phpunit-mock-db": "*",
         "dibi/dibi": "~3.0"
     },
     "autoload": {
