@@ -18,10 +18,10 @@ class EqualsSQLQueriesConstraint extends SQL\EqualsSQLQueriesConstraint
     public function __construct(
         Connection $connection,
         $value,
-        float $delta = 0.0,
-        int $maxDepth = 10,
-        bool $canonicalize = FALSE,
-        bool $ignoreCase = FALSE
+        $delta = 0.0,
+        $maxDepth = 10,
+        $canonicalize = FALSE,
+        $ignoreCase = FALSE
     ) {
         parent::__construct(
             array_map(

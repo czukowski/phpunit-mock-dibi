@@ -35,7 +35,7 @@ class DriversIntegrationTest extends Testcase
      * 
      * @dataProvider  provideMatchSingleSelectInvocation
      */
-    public function testMatchAnyQueryAnyInvocationCount(Driver $driver, string $query, array $expected)
+    public function testMatchAnyQueryAnyInvocationCount(Driver $driver, $query, $expected)
     {
         $dibi = $this->createDibiConnection($driver);
         $this->createDatabaseMock($dibi)
@@ -52,7 +52,7 @@ class DriversIntegrationTest extends Testcase
      * 
      * @dataProvider  provideMatchSingleSelectInvocation
      */
-    public function testMatchAnyQuerySingleInvocation(Driver $driver, string $query, array $expected)
+    public function testMatchAnyQuerySingleInvocation(Driver $driver, $query, $expected)
     {
         $dibi = $this->createDibiConnection($driver);
         $this->createDatabaseMock($dibi)
@@ -93,9 +93,9 @@ class DriversIntegrationTest extends Testcase
      */
     public function testMatchWithQueryMatchersOnceEach(
         Driver $driver,
-        string $query1,
+        $query1,
         array $expected1,
-        string $query2,
+        $query2,
         array $expected2
     ) {
         $dibi = $this->createDibiConnection($driver);
@@ -137,12 +137,12 @@ class DriversIntegrationTest extends Testcase
      */
     public function testMatchMixedQueriesWithQueryMatchersOnceEach(
         Driver $driver,
-        string $query1,
+        $query1,
         array $expected1,
-        string $query2,
-        int $expected2,
-        string $query3,
-        int $expected3
+        $query2,
+        $expected2,
+        $query3,
+        $expected3
     ) {
         $dibi = $this->createDibiConnection($driver);
         $mock = $this->createDatabaseMock($dibi);
@@ -193,7 +193,7 @@ class DriversIntegrationTest extends Testcase
      */
     public function testMatchWithQueryMatchersWithConsecutiveCalls(
         Driver $driver,
-        string $query,
+        $query,
         array $expecteds
     ) {
         $dibi = $this->createDibiConnection($driver);
@@ -229,9 +229,9 @@ class DriversIntegrationTest extends Testcase
      */
     public function testMatchWithQueryMatcherAssertAffectedRows(
         Driver $driver,
-        int $expectTimes,
-        string $query,
-        int $expected
+        $expectTimes,
+        $query,
+        $expected
     ) {
         $dibi = $this->createDibiConnection($driver);
         $this->createDatabaseMock($dibi)
@@ -263,7 +263,7 @@ class DriversIntegrationTest extends Testcase
     public function testMatchQueryWithPHPUnitConstraint(
         Driver $driver,
         Constraint $constraint,
-        string $query,
+        $query,
         array $expected
     ) {
         $dibi = $this->createDibiConnection($driver);
@@ -296,7 +296,7 @@ class DriversIntegrationTest extends Testcase
      */
     public function testMatchWithQueryMatchersWithConsecutiveCallsBuilder(
         Driver $driver,
-        string $query,
+        $query,
         Throwable $exception,
         array $expecteds
     ) {
@@ -358,7 +358,7 @@ class DriversIntegrationTest extends Testcase
         Driver $driver,
         Constraint $constraint,
         callable $callback,
-        string $query,
+        $query,
         callable $assert
     ) {
         $dibi = $this->createDibiConnection($driver);
