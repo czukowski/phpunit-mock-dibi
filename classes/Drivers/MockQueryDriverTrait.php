@@ -157,7 +157,7 @@ trait MockQueryDriverTrait
     /**
      * @return  Mock
      */
-    public function getMockObject(): Mock
+    public function getMockObject()
     {
         return $this->mock;
     }

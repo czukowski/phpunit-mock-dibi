@@ -15,5 +15,5 @@ interface DatabaseDriverInterface extends OriginalDatabaseDriverInterface
     /**
      * @return  Mock
      */
-    function getMockObject(): Mock;
+    function getMockObject();
 }
