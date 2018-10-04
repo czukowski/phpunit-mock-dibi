@@ -17,7 +17,6 @@ class SqlsrvDriver extends Drivers\SqlsrvDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @param  string  $config

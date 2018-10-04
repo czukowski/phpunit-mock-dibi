@@ -17,7 +17,6 @@ class FirebirdDriver extends Drivers\FirebirdDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @var  boolean

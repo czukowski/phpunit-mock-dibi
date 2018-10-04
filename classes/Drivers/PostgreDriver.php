@@ -17,7 +17,6 @@ class PostgreDriver extends Drivers\PostgreDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @var  boolean

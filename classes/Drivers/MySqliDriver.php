@@ -16,6 +16,5 @@ class MySqliDriver extends Drivers\MySqliDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
     use MySqlDriverTrait;
 }

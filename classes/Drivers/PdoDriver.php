@@ -16,7 +16,6 @@ class PdoDriver extends Drivers\PdoDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @var  string

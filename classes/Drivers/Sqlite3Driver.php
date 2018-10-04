@@ -19,7 +19,6 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @param  array  $config

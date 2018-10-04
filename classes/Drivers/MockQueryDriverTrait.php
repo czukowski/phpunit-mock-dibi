@@ -20,6 +20,7 @@ use Cz\PHPUnit\MockDB\Invocation\QueryInvocation,
 trait MockQueryDriverTrait
 {
     use DatabaseDriverTrait;
+    use MockQueryResultDriverTrait;
 
     /**
      * @var  integer
@@ -29,10 +30,6 @@ trait MockQueryDriverTrait
      * @var  mixed
      */
     private $lastInsertId;
-    /**
-     * @var  mixed
-     */
-    private $resultSet;
     /**
      * @var  QueryInvocationFactoryInterface
      */
@@ -72,12 +69,6 @@ trait MockQueryDriverTrait
             ? new QueryInvocation($trimmed)
             : $this->invocationFactory->createInvocation($trimmed);
     }
-
-    /**
-     * @param   mixed  $resultSet
-     * @return  ResultDriver
-     */
-    abstract public function createResultSet($resultSet);
 
     /**
      * @param  string        $sql

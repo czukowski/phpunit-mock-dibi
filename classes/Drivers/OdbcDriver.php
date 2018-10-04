@@ -17,7 +17,6 @@ class OdbcDriver extends Drivers\OdbcDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @var  boolean

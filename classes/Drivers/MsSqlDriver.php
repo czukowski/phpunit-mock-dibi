@@ -16,7 +16,6 @@ class MsSqlDriver extends Drivers\MsSqlDriver implements
 {
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
-    use MockQueryResultDriverTrait;
 
     /**
      * @param   mixed  $sequence
