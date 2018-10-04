@@ -21,7 +21,8 @@ Install using Composer:
 composer require czukowski/phpunit-mock-dibi
 ```
 
-Dibi versions starting from 3.0 are supported.
+ - Dibi version 4.x is supported with PHP 7.1 or newer.
+ - Dibi version 3.x is supported with PHP 5.6 or newer.
 
 Usage
 -----
