@@ -34,6 +34,6 @@ trait MockTrait
     /**
      * Commented out for compatibility with older PHPUnit versions.
      * 
-     * abstract public function registerMockObject(\PHPUnit\Framework\MockObject\MockObject $mockObject): void;
+     * abstract public function registerMockObject(\PHPUnit\Framework\MockObject\MockObject $mockObject);
      */
 }

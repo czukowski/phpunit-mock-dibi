@@ -15,14 +15,13 @@ query builder and supports a variety of relational database systems.
 Installation
 ------------
 
-Pick your version! Version numbering follows Dibi version numbers, so for a given Dibi N.x
-version, the installation command would look like this:
+Install using Composer:
 
 ```sh
-composer require --dev czukowski/phpunit-mock-dibi "~N.0"
+composer require czukowski/phpunit-mock-dibi
 ```
 
-Dibi versions starting from 3.0 using PHP 7 are supported.
+Dibi versions starting from 3.0 are supported.
 
 Usage
 -----
