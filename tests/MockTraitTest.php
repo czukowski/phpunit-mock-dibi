@@ -45,7 +45,7 @@ class MockTraitTest extends Testcase
      * @param   string  $type
      * @return  Driver
      */
-    private function createDibiDriver(string $type)
+    private function createDibiDriver($type)
     {
         switch ($type) {
             case 'base':
@@ -72,7 +72,7 @@ class MockTraitTest extends Testcase
      * @param   NULL     $registerMockObject
      * @return  MockTrait
      */
-    private function createObject(bool $expectException, & $registerMockObject)
+    private function createObject($expectException, & $registerMockObject)
     {
         $methods = ['registerMockObject'];
         $object = $this->getMockForTrait(MockTrait::class, [], '', TRUE, TRUE, TRUE, $methods);
