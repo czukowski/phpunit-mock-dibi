@@ -4,6 +4,7 @@ namespace Cz\PHPUnit\MockDibi\Drivers;
 use Cz\PHPUnit\MockDB\Invocation\QueryInvocation,
     Cz\PHPUnit\MockDB\Invocation\QueryInvocationFactoryInterface,
     Cz\PHPUnit\MockDB\Mock,
+    Cz\PHPUnit\SQL\DatabaseDriverTrait,
     Dibi\Reflector,
     Dibi\ResultDriver;
 
@@ -18,6 +19,8 @@ use Cz\PHPUnit\MockDB\Invocation\QueryInvocation,
  */
 trait MockQueryDriverTrait
 {
+    use DatabaseDriverTrait;
+
     /**
      * @var  integer
      */
@@ -38,10 +41,6 @@ trait MockQueryDriverTrait
      * @var  Mock
      */
     private $mock;
-    /**
-     * @var  array
-     */
-    private $queries = [];
 
     /**
      * @param   string  $sql
@@ -143,24 +142,6 @@ trait MockQueryDriverTrait
     public function setResultSet($resultSet)
     {
         $this->resultSet = $resultSet;
-    }
-
-    /**
-     * @param  string  $sql
-     */
-    private function addExecutedQuery($sql)
-    {
-        $this->queries[] = $sql;
-    }
-
-    /**
-     * Implements `Cz\PHPUnit\SQL\DatabaseDriverInterface`
-     * 
-     * @return  array
-     */
-    public function getExecutedQueries(): array
-    {
-        return $this->queries;
     }
 
     /**
