@@ -25,8 +25,8 @@ class Sqlite3Driver extends Drivers\Sqlite3Driver implements
      */
     public function __construct(array $config = [])
     {
-        $formatDate = $config['formatDate'] ?? 'U';
-        $formatDateTime = $config['formatDateTime'] ?? 'U';
+        $formatDate = isset($config['formatDate']) ? $config['formatDate'] : 'U';
+        $formatDateTime = isset($config['formatDateTime']) ? $config['formatDateTime'] : 'U';
         $this->setDateTimeFormats($formatDate, $formatDateTime);
         // No calling parent constructor!
     }
