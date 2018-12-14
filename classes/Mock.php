@@ -39,4 +39,12 @@ class Mock extends MockDB\Mock
         }
         return $this->invocationMocker;
     }
+
+    /**
+     * @return  void
+     */
+    public function unsetInvocationMocker()
+    {
+        $this->invocationMocker = NULL;
+    }
 }
