@@ -6,6 +6,7 @@ use Cz\PHPUnit\MockDibi\Drivers\DatabaseDriverInterface,
     Dibi\Connection,
     Dibi\Driver,
     LogicException,
+    ReflectionProperty,
     Throwable;
 
 /**
@@ -84,7 +85,9 @@ class MockTraitTest extends Testcase
             ->with($this->callback(
                 function ($mockObject) use ( & $registerMockObject) {
                     $this->assertInstanceOf(MockWrapper::class, $mockObject);
-                    $mock = $this->getObjectAttribute($mockObject, 'object');
+                    $objectProperty = new ReflectionProperty(MockWrapper::class, 'object');
+                    $objectProperty->setAccessible(TRUE);
+                    $mock = $objectProperty->getValue($mockObject);
                     $this->assertInstanceOf(Mock::class, $mock);
                     $registerMockObject = $mock;
                     return TRUE;

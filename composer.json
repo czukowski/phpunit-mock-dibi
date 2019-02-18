@@ -16,7 +16,7 @@
     },
     "require": {
         "czukowski/phpunit-mock-db": ">=5.0",
-        "czukowski/phpunit-sql": "^5.0.2 || ^6.0.2 || ^7.0.2",
+        "czukowski/phpunit-sql": "^5.0.2 || ^6.0.2 || ^7.0.2 || ^8.0",
         "dibi/dibi": "^4.0.1"
     },
     "autoload": {
