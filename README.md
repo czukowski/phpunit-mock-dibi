@@ -22,7 +22,7 @@ composer require czukowski/phpunit-mock-dibi
 ```
 
  - Dibi version 4.x is supported with PHP 7.1 or newer.
- - Dibi version 3.x is supported with PHP 5.6 or newer.
+ - Dibi version 3.x is supported with PHP 5.6 or newer (no support for PHPUnit 8 and higher).
 
 Usage
 -----

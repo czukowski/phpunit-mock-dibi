@@ -4,9 +4,11 @@ php:
   - '7.0'
   - '7.1'
   - '7.2'
+  - '7.3'
 
 env:
   - PHPUNIT_VERSION=""
+  - PHPUNIT_VERSION="~7.0"
   - PHPUNIT_VERSION="~6.0"
   - PHPUNIT_VERSION="~5.0"
 
