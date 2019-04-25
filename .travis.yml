@@ -1,8 +1,6 @@
 language: php
 
 php:
-  - '7.0'
-  - '7.1'
   - '7.2'
   - '7.3'
 
@@ -15,6 +13,16 @@ env:
 matrix:
   include:
     - php: '5.6'
+      env: PHPUNIT_VERSION=""
+    - php: '7.0'
+      env: PHPUNIT_VERSION="~5.0"
+    - php: '7.0'
+      env: PHPUNIT_VERSION=""
+    - php: '7.1'
+      env: PHPUNIT_VERSION="~5.0"
+    - php: '7.1'
+      env: PHPUNIT_VERSION="~6.0"
+    - php: '7.1'
       env: PHPUNIT_VERSION=""
 
 before_install:
