@@ -59,17 +59,17 @@ class MockQueryDriverTraitTest extends Testcase
         return [
             [
                 'SELECT * FROM `t1`',
-                NULL, NULL, 100,
+                NULL, NULL, [['id' => 100]],
                 $this->createMock(ResultDriver::class),
             ],
             [
                 'SELECT * FROM `t2`',
-                NULL, 10, 100,
+                NULL, 10, [['id' => 100]],
                 $this->createMock(ResultDriver::class),
             ],
             [
                 'SELECT * FROM `t3`',
-                1, 10, 100,
+                1, 10, [['id' => 100]],
                 $this->createMock(ResultDriver::class),
             ],
             [

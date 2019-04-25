@@ -32,7 +32,7 @@ class Mock extends MockDB\Mock
     /**
      * @return  InvocationMocker
      */
-    public function getInvocationMocker()
+    public function getInvocationMocker(): MockDB\InvocationMocker
     {
         if ($this->invocationMocker === NULL) {
             $this->invocationMocker = new InvocationMocker($this->connection);
@@ -43,7 +43,7 @@ class Mock extends MockDB\Mock
     /**
      * @return  void
      */
-    public function unsetInvocationMocker()
+    public function unsetInvocationMocker(): void
     {
         $this->invocationMocker = NULL;
     }
