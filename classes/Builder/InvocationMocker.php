@@ -38,7 +38,7 @@ class InvocationMocker extends OriginalInvocationMocker
      * @param   Constraint|string  $constraint
      * @return  $this
      */
-    public function query($constraint): parent
+    public function query($constraint)
     {
         if (is_string($constraint)) {
             $constraint = new EqualsSQLQueriesConstraint($this->connection, $constraint);
