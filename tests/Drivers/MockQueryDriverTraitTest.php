@@ -102,10 +102,12 @@ class MockQueryDriverTraitTest extends Testcase
     {
         $trimmed = trim($sql);
         $invocationFactory = $this->createMock(QueryInvocationFactoryInterface::class);
-        $invocationFactory->expects($expected ? $this->once() : $this->never())
-            ->method('createInvocation')
-            ->with($trimmed)
-            ->willReturn($expected);
+        $invocationFactoryMocker = $invocationFactory->expects($expected ? $this->once() : $this->never())
+            ->method('createInvocation');
+        if ($expected) {
+            $invocationFactoryMocker->with($trimmed)
+                ->willReturn($expected ?? $this->anything());
+        }
         $mock = $this->createMockDouble($requireMatch);
         $object = $this->createObject();
         $object->setMockObject($mock);

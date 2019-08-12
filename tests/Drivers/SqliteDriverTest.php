@@ -96,9 +96,11 @@ class SqliteDriverTest extends Testcase
      */
     public function testEscapeDateTime($format, $value, $expected)
     {
+        $previousTimeZone = ini_set('date.timezone', 'UTC');
         $object = $this->createObject('U', $format);
         $actual = $object->escapeDateTime($value);
         $this->assertSame($expected, $actual);
+        ini_set('date.timezone', $previousTimeZone);
     }
 
     public function provideEscapeDateTime()
