@@ -2,8 +2,6 @@
 namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use DateTime,
-    DateTimeImmutable,
-    DateTimeZone,
     Dibi\DateTime as DibiDateTime,
     Dibi\NotImplementedException;
 
@@ -84,9 +82,9 @@ class SqliteDriverTest extends Testcase
     public function provideEscapeDate()
     {
         return [
-            ['Y-m-d', new DibiDateTime(1525932234, new DateTimeZone('UTC')), '2018-05-10'],
-            ['Y-m-d', new DateTime('2018-05-10 08:18:53'), '2018-05-10'],
-            ['Y-m-d', new DateTimeImmutable('2018-05-10 00:00:00'), '2018-05-10'],
+            ['Y-m-d', 1525932234, '2018-05-10'],
+            ['Y-m-d', '2018-05-10 08:18:53', '2018-05-10'],
+            ['Y-m-d', new DateTime('2018-05-10 00:00:00'), '2018-05-10'],
             ['Y-m-d', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10'],
         ];
     }
@@ -108,8 +106,8 @@ class SqliteDriverTest extends Testcase
     public function provideEscapeDateTime()
     {
         return [
-            ['Y-m-d H:i:s', new DibiDateTime(1525932234, new DateTimeZone('UTC')), '2018-05-10 06:03:54'],
-            ['Y-m-d H:i:s', new DateTimeImmutable('2018-05-10 08:18:53'), '2018-05-10 08:18:53'],
+            ['Y-m-d H:i:s', 1525932234, '2018-05-10 06:03:54'],
+            ['Y-m-d H:i:s', '2018-05-10 08:18:53', '2018-05-10 08:18:53'],
             ['Y-m-d H:i:s', new DateTime('2018-05-10 00:00:00'), '2018-05-10 00:00:00'],
             ['Y-m-d H:i:s', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10 23:59:59'],
         ];

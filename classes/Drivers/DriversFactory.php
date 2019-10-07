@@ -154,10 +154,8 @@ class DriversFactory
     /**
      * @return  SqlsrvDriver
      */
-    public function createSqlsrvDriver(string $version = '11')
+    public function createSqlsrvDriver()
     {
-        return new SqlsrvDriver([
-            'version' => $version,
-        ]);
+        return new SqlsrvDriver;
     }
 }
