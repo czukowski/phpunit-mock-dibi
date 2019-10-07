@@ -19,11 +19,6 @@ trait MockQueryConnectionTrait
         // Empty implementation to prevent clearing non-existing resources.
     }
 
-    public function connect(array & $config)
-    {
-        // Empty implementation to prevent connection to real database service.
-    }
-
     public function disconnect(): void
     {
         // Empty implementation to prevent closing non-existant connection.

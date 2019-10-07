@@ -18,13 +18,16 @@ class SqlsrvDriver extends Drivers\SqlsrvDriver implements
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
 
+    private const DEFAULT_VERSION = '11';
+
     /**
-     * @param  string  $config
+     * @param  array  $config
      */
-    public function connect(array & $config)
+    public function __construct(array $config = [])
     {
-        $version = isset($config['version']) ? $config['version'] : '11';
+        $version = isset($config['version']) ? $config['version'] : self::DEFAULT_VERSION;
         $this->setVersion($version);
+        // No calling parent constructor!
     }
 
     /**

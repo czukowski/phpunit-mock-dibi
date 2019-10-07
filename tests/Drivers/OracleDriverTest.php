@@ -1,6 +1,10 @@
 <?php
 namespace Cz\PHPUnit\MockDibi\Drivers;
 
+use DateTimeImmutable,
+    DateTimeZone,
+    Dibi\DateTime as DibiDateTime;
+
 /**
  * OracleDriverTest
  * 
@@ -64,8 +68,8 @@ class OracleDriverTest extends Testcase
     public function provideEscapeDate()
     {
         return [
-            [FALSE, 1537163164, '1537163164'],
-            [TRUE, 1537163164, "to_date('2018-09-17', 'YYYY-mm-dd')"],
+            [FALSE, new DibiDateTime(1537163164, new DateTimeZone('UTC')), '1537163164'],
+            [TRUE, new DateTimeImmutable('2018-09-17T07:46:04+02:00'), "to_date('2018-09-17', 'YYYY-mm-dd')"],
         ];
     }
 

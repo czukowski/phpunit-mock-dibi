@@ -5,6 +5,8 @@ use Cz\PHPUnit\MockDB\Invocation\QueryInvocation,
     Cz\PHPUnit\MockDB\Invocation\QueryInvocationFactoryInterface,
     Cz\PHPUnit\MockDB\Mock,
     Cz\PHPUnit\SQL\DatabaseDriverTrait,
+    DateInterval,
+    DateTimeInterface,
     Dibi\Reflector,
     Dibi\ResultDriver;
 
@@ -216,16 +218,22 @@ trait MockQueryDriverTrait
     abstract public function escapeBool(bool $value): string;
 
     /**
-     * @param   mixed  $value
+     * @param   DateTimeInterface  $value
      * @return  string
      */
-    abstract public function escapeDate($value): string;
+    abstract public function escapeDate(DateTimeInterface $value): string;
 
     /**
-     * @param   mixed  $value
+     * @param   DateTimeInterface  $value
      * @return  string
      */
-    abstract public function escapeDateTime($value): string;
+    abstract public function escapeDateTime(DateTimeInterface $value): string;
+
+    /**
+     * @param   DateInterval  $value
+     * @return  string
+     */
+    abstract public function escapeDateInterval(DateInterval $value): string;
 
     /**
      * @param   string   $value

@@ -14,13 +14,12 @@ class SqlsrvDriverTest extends Testcase
     /**
      * @dataProvider  provideConnect
      */
-    public function testConnect($config, $expected)
+    public function testConnect($arguments, $expected)
     {
-        $object = $this->createObject();
-        $object->connect($config);
+        $object = $this->createObject($arguments);
 
-        $version = $this->getReflectionProperty(OriginalSqlsrvDriver::class, 'version');
-        $this->assertSame($expected, $version->getValue($object));
+        $versionProperty = $this->getReflectionProperty(OriginalSqlsrvDriver::class, 'version');
+        $this->assertSame($expected, $versionProperty->getValue($object));
         $connection = $this->getReflectionProperty(OriginalSqlsrvDriver::class, 'connection');
         $this->assertNull($connection->getValue($object));
     }
@@ -29,7 +28,7 @@ class SqlsrvDriverTest extends Testcase
     {
         return [
             [[], '11'],
-            [['version' => '12'], '12'],
+            [['12'], '12'],
         ];
     }
 
@@ -84,9 +83,7 @@ class SqlsrvDriverTest extends Testcase
     public function testApplyLimit($sql, $limit, $offset, $expected)
     {
         // Test to make sure version related NotSupportedException is not triggered.
-        $config = [];
-        $object = $this->createObject();
-        $object->connect($config);
+        $object = $this->createObject([]);
         $object->applyLimit($sql, $limit, $offset);
         $this->assertSame($expected, $sql);
     }
@@ -104,11 +101,12 @@ class SqlsrvDriverTest extends Testcase
     }
 
     /**
+     * @param   array  $arguments
      * @return  SqlsrvDriver
      */
-    private function createObject()
+    private function createObject(array $arguments = [])
     {
         return $this->getDriversFactory()
-            ->createSqlsrvDriver();
+            ->createSqlsrvDriver(...$arguments);
     }
 }
