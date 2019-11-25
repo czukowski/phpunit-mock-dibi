@@ -20,9 +20,10 @@ class MockDouble extends Mock
      * Note: no strict type check here.
      * 
      * @param   Invocation  $invocation
+     * @param   array       $parameters
      * @return  Invocation
      */
-    public function invoke($invocation)
+    public function invoke($invocation, array $parameters = [])
     {
         $this->invoked = $invocation;
         return $invocation;
