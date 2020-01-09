@@ -2,6 +2,8 @@
 namespace Cz\PHPUnit\MockDibi\Drivers;
 
 use DateTime,
+    DateTimeImmutable,
+    DateTimeZone,
     Dibi\DateTime as DibiDateTime,
     Dibi\NotImplementedException,
     Dibi\NotSupportedException;
@@ -83,9 +85,9 @@ class Sqlite3DriverTest extends Testcase
     public function provideEscapeDate()
     {
         return [
-            ['Y-m-d', 1525932234, '2018-05-10'],
-            ['Y-m-d', '2018-05-10 08:18:53', '2018-05-10'],
-            ['Y-m-d', new DateTime('2018-05-10 00:00:00'), '2018-05-10'],
+            ['Y-m-d', new DibiDateTime(1525932234, new DateTimeZone('UTC')), '2018-05-10'],
+            ['Y-m-d', new DateTime('2018-05-10 08:18:53'), '2018-05-10'],
+            ['Y-m-d', new DateTimeImmutable('2018-05-10 00:00:00'), '2018-05-10'],
             ['Y-m-d', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10'],
         ];
     }
@@ -97,16 +99,18 @@ class Sqlite3DriverTest extends Testcase
      */
     public function testEscapeDateTime($format, $value, $expected)
     {
+        $previousTimeZone = ini_set('date.timezone', 'UTC');
         $object = $this->createObject('U', $format);
         $actual = $object->escapeDateTime($value);
         $this->assertSame($expected, $actual);
+        ini_set('date.timezone', $previousTimeZone);
     }
 
     public function provideEscapeDateTime()
     {
         return [
-            ['Y-m-d H:i:s', 1525932234, '2018-05-10 06:03:54'],
-            ['Y-m-d H:i:s', '2018-05-10 08:18:53', '2018-05-10 08:18:53'],
+            ['Y-m-d H:i:s', new DibiDateTime(1525932234, new DateTimeZone('UTC')), '2018-05-10 06:03:54'],
+            ['Y-m-d H:i:s', new DateTimeImmutable('2018-05-10 08:18:53'), '2018-05-10 08:18:53'],
             ['Y-m-d H:i:s', new DateTime('2018-05-10 00:00:00'), '2018-05-10 00:00:00'],
             ['Y-m-d H:i:s', new DibiDateTime('2018-05-10 23:59:59'), '2018-05-10 23:59:59'],
         ];
