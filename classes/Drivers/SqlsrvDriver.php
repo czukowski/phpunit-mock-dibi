@@ -18,7 +18,7 @@ class SqlsrvDriver extends Drivers\SqlsrvDriver implements
     use MockQueryConnectionTrait;
     use MockQueryDriverTrait;
 
-    private const DEFAULT_VERSION = '11';
+    const DEFAULT_VERSION = '11';
 
     /**
      * @param  array  $config
