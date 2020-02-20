@@ -157,7 +157,7 @@ trait MockQueryDriverTrait
      * 
      * @param  Mock  $mock
      */
-    public function setMockObject(Mock $mock)
+    public function setMockObject(Mock $mock): void
     {
         $this->mock = $mock;
     }

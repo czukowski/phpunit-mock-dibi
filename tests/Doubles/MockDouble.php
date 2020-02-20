@@ -1,7 +1,8 @@
 <?php
 namespace Cz\PHPUnit\MockDibi\Doubles;
 
-use Cz\PHPUnit\MockDB\Mock;
+use Cz\PHPUnit\MockDB\Invocation,
+    Cz\PHPUnit\MockDB\Mock;
 
 /**
  * MockDouble
@@ -23,7 +24,7 @@ class MockDouble extends Mock
      * @param   array       $parameters
      * @return  Invocation
      */
-    public function invoke($invocation, array $parameters = [])
+    public function invoke($invocation, array $parameters = []): Invocation
     {
         $this->invoked = $invocation;
         return $invocation;

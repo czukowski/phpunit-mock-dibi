@@ -1,7 +1,7 @@
 <?php
 namespace Cz\PHPUnit\MockDibi;
 
-use Cz\PHPUnit\MockDibi\Drivers\DatabaseDriverInterface,
+use Cz\PHPUnit\MockDibi\Doubles\DriverDouble,
     Cz\PHPUnit\MockDB\MockObject\MockWrapper,
     Dibi\Connection,
     Dibi\Driver,
@@ -56,7 +56,7 @@ class MockTraitTest extends Testcase
                 return $this->createMock(Driver::class);
             case 'mock':
                 $setMockObject = NULL;
-                $object = $this->createMock([Driver::class, DatabaseDriverInterface::class]);
+                $object = $this->createMock(DriverDouble::class);
                 $object->expects($this->once())
                     ->method('setMockObject')
                     ->willReturnCallback(function ($object) use ( & $setMockObject) {

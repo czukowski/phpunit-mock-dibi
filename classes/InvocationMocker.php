@@ -2,6 +2,7 @@
 namespace Cz\PHPUnit\MockDibi;
 
 use Cz\PHPUnit\MockDibi\Builder\InvocationMocker as InvocationMockerBuilder,
+    Cz\PHPUnit\MockDB\Builder\InvocationMocker as MockDBInvocationMockerBuilder,
     Cz\PHPUnit\MockDB\InvocationMocker as OriginalInvocationMocker,
     Cz\PHPUnit\MockDB\Matcher\RecordedInvocation,
     Dibi\Connection;
@@ -31,7 +32,7 @@ class InvocationMocker extends OriginalInvocationMocker
      * @param   RecordedInvocation  $matcher
      * @return  InvocationMockerBuilder
      */
-    public function expects(RecordedInvocation $matcher)
+    public function expects(RecordedInvocation $matcher): MockDBInvocationMockerBuilder
     {
         return new InvocationMockerBuilder($this, $matcher, $this->connection);
     }
