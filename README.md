@@ -1,7 +1,7 @@
 Dibi mocking helpers for PHPUnit
 ================================
 
-[![Build Status](https://api.travis-ci.org/czukowski/phpunit-mock-dibi.svg?branch=dibi-3)](https://travis-ci.org/czukowski/phpunit-mock-dibi)
+![PHPUnit](https://github.com/czukowski/phpunit-mock-dibi/workflows/PHPUnit/badge.svg?branch=dibi-3)
 
 A mock-object library for database queries testing, without having to initialize in-memory
 database from fixtures. Rather, every query executed by a tested code can be set to return
