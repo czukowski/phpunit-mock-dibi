@@ -1,5 +1,5 @@
 {
-    "name": "czukowski/phpunit-mock-dibi",
+    "name": "tombrain/phpunit-mock-dibi",
     "type": "library",
     "description": "Dibi mocking helpers for PHPUnit",
     "keywords": ["phpunit", "dibi", "database", "mock"],
@@ -11,13 +11,23 @@
             "homepage": "http://xn----0tbl7bn.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/tombrain/phpunit-sql.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tombrain/phpunit-mock-db.git"
+        }
+    ],
     "support": {
         "issues": "https://github.com/czukowski/phpunit-mock-dibi/issues"
     },
     "require": {
-        "czukowski/phpunit-mock-db": "^7.0 || >= 8.2",
-        "czukowski/phpunit-sql": "^7.0.2 || ^8.0 || ^9.0",
-        "dibi/dibi": "4.2.x-dev"
+        "tombrain/phpunit-sql": "dev-master",
+        "tombrain/phpunit-mock-db": "dev-master",
+        "dibi/dibi": "^4.2.x-dev"
     },
     "autoload": {
         "psr-4": {

@@ -74,7 +74,7 @@ class PdoDriver extends Drivers\PdoDriver implements
     /**
      * @throws  PdoResult
      */
-    public function createResultDriver(PDOStatement $result): Drivers\PdoResult
+    public function createResultDriver(/*PDOStatement*/ $result): Drivers\PdoResult
     {
         return new PdoResult($result, $this->driverName);
     }

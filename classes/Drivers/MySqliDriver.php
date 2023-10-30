@@ -82,7 +82,7 @@ class MySqliDriver extends Drivers\MySqliDriver implements
     /**
      * @return  MySqliResult
      */
-    public function createResultDriver(mysqli_result $result): Drivers\MySqliResult
+    public function createResultDriver(/*mysqli_result*/ $result): Drivers\MySqliResult
     {
         return new MySqliResult($result);
     }

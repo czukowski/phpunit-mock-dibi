@@ -69,7 +69,7 @@ class SqliteDriver extends Drivers\SqliteDriver implements
      * @param   NativeSQLiteResult  $result
      * @return  SqliteResult
      */
-    public function createResultDriver(NativeSQLiteResult $result): Drivers\SqliteResult
+    public function createResultDriver(/*NativeSQLiteResult*/ $result): Drivers\SqliteResult
     {
         return new SqliteResult($result);
     }
